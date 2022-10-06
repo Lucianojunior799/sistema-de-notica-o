@@ -3,7 +3,13 @@ const button = document.querySelector("button")
 button.addEventListener("click", () => {
     Notification.requestPermission().then(perm => {
         if (perm === "granted") {
-         new Notification("Exemplo notificação")   
+       const notification  =  new Notification("Exemplo notificação", {
+            body: "this is more text",
+            data: { hello: "word"}
+         })  
+         notification.addEventListener("error", e => {
+            alert( "error")
+         })
         }
     })
 })
